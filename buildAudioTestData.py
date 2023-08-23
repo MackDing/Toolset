@@ -2,14 +2,15 @@ from pydub import AudioSegment
 import random
 
 # 加载本地音频文件
-input_audio = AudioSegment.from_file("./datasets/test.wav")
+# input_audio = AudioSegment.from_file("./datasets/test.wav")
+input_audio = AudioSegment.from_file("./results/output.aiff")
 
 # 目标总时长为1分钟
-target_duration = 60000  # 毫秒
+target_duration = 50000  # 毫秒
 
 # 计算噪音、静音、弱声部分的时长
-noise_duration = 20000  # 20秒
-silence_duration = 20000  # 20秒
+noise_duration = 10000  # 10秒
+silence_duration = 10000  # 10秒
 weak_audio_duration = 20000  # 20秒
 
 # 剪切为目标时长
@@ -30,8 +31,16 @@ silence = AudioSegment.silent(duration=silence_duration)
 weak_audio = AudioSegment.silent(duration=weak_audio_duration)
 weak_audio = weak_audio.overlay(input_audio.apply_gain(-20), loop=True)
 
+
+# 拼接原音频的10秒
+original = input_audio[20000:30000]
+
+
 # 合并所有部分
-final_audio = noise + silence + weak_audio
+final_audio = noise + silence + weak_audio + original
+
+
 
 # 导出结果音频文件
-final_audio.export("./results/test_audio_with_effects.wav", format="wav")
+# final_audio.export("./results/test_audio_with_effects.wav", format="wav")
+final_audio.export("./results/test_audio.aiff", format="aiff")

@@ -31,7 +31,7 @@ def extract_frames(video_path, output_folder, frame_interval=1):
     print(f"成功抽取 {count // step} 帧图像")
 
 if __name__ == "__main__":
-    video_file = r"F:\Dataset\2023\September\落石、滑坡侵入识别10.0\穿山港昌景黄隧道口100\灰色_50_1（凌晨）_D-8.mp4"  # 替换为你的视频文件路径
-    output_folder = "./Video_handle/results_extract_frames"  # 替换为输出帧图像的文件夹路径
+    video_file = r"F:\Dataset\2023\September\落石、滑坡侵入识别10.0\穿山港昌景黄隧道口100\黑色_100_1（傍晚）_B-1_C-7\黑色_100_1（傍晚）_B-2.mp4"  # 替换为你的视频文件路径
+    output_folder = r"F:\Dataset\2023\September\落石、滑坡侵入识别10.0\穿山港昌景黄隧道口100\黑色_100_1（傍晚）_B-1_C-7"  # 替换为输出帧图像的文件夹路径
 
     extract_frames(video_file, output_folder, frame_interval=10)  # 每隔10帧抽取一帧

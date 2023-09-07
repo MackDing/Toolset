@@ -2,8 +2,20 @@ import cv2
 import numpy as np
 
 def showPolygon(image_path, polygon_coords, linestring_coords):
+    polygon_str = polygon_coords[0]
+    linestring_str = linestring_coords[0]
+    # print(polygon_str)
+
+    polygon_coords = [(float(coord.split()[0]), float(coord.split()[1])) for coord in polygon_str[10:-2].split(",")]
+    linestring_coords = [(float(coord.split()[0]), float(coord.split()[1])) for coord in linestring_str[11:-1].split(",")]
+
+    print(polygon_coords)
     # 加载本地图片
     image = cv2.imread(image_path)
+
+    screen_width, screen_height = 1366, 768
+
+    image = cv2.resize(image, (screen_width, screen_height))
 
     # 将多边形和线的坐标转换为图像上的坐标
     image_height, image_width, _ = image.shape
@@ -25,7 +37,7 @@ def showPolygon(image_path, polygon_coords, linestring_coords):
     cv2.destroyAllWindows()
 
 # 调用函数
-image_path = "./datasets/111111111111111_in.jpg"
-polygon_coords = [(0.31493, 0.50370), (0.20452, 0.80556), (0.78795, 0.80741), (0.67001, 0.44259)]
-linestring_coords = [(0.27353, 0.64444), (0.70891, 0.63519)]
+image_path = "./datasets/222222222222222222_in.jpg"
+polygon_coords =  ["POLYGON((0.42484 0.47778,0.35280 0.85000,0.66957 0.81481,0.61739 0.46481))"]
+linestring_coords = ["LINESTRING(0.40870 0.61852,0.62733 0.61852)"]
 showPolygon(image_path, polygon_coords, linestring_coords)

@@ -63,8 +63,6 @@ class LabelCheck(object):
 
 if __name__ == '__main__':
     # 从文件夹中获取所有的标签
-    xml_path = r"\\192.168.1.97\data\inbox\2023\8月\田方杰\智慧LZ安全监管建设项目\done\留置人员面部异常动作识别\V3\testa"
+    xml_path = r"\\192.168.1.97\data\inbox\2023\9月\田方杰\青岛自贸区政务大厅项目\done\窗口纠纷识别（目标检测）\V1\testa"
     labels, count = LabelCheck(xml_path).all_label()
     print(list((labels.keys())))
-
-
